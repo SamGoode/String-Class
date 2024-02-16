@@ -43,9 +43,6 @@ class String {
 		const char& operator[](size_t _index) const;
 
 	private:
-		char* data;
+		const char* data;
 		int length;
-	/*
-	* Put your internal data structures and members here
-	*/
 };

@@ -1,26 +1,23 @@
 #include "String.h"
-
-String::String() {
-
-}
-
+/*
 String::String(const char* _str) {
-	length = sizeof(_str);
-
-	for (int i = 0; i < length; i++) {
-		data[i] = _str[i];
-	}
+	length = sizeof(_str)/sizeof(char);
+	
+	data = _str;
 }
 
 String::String(const String& _other) {
-	
-}
-
-String::~String()
-{
+	data = _other.CStr();
 }
 
 size_t String::Length() const
 {
-	return size_t();
+	return length;
 }
+
+
+const char* String::CStr() const
+{
+	return data;
+}
+*/
