@@ -1,53 +1,51 @@
 #pragma once
-#ifndef CUSTOM_STRING_HEADER
-#define CUSTOM_STRING_HEADER
 
-class String
-{
-public:
-	String();
-	String(const char* _str);
+class String {
+	public:
+		String();
 
-	String(const String& _other);
+		String(const char* _str);
 
-	~String();
+		String(const String& _other);
 
-public:
-	size_t Length() const;
-	char& CharacterAt(size_t _index);
-	const char& CharacterAt(size_t _index) const;
+		~String();
 
-	bool EqualTo(const String& _other) const;
+	public:
+		size_t Length() const;
+		char& CharacterAt(size_t _index);
+		const char& CharacterAt(size_t _index) const;
 
-	String& Append(const String& _str);
-	String& Prepend(const String& _str);
+		bool EqualTo(const String& _other) const;
 
-	const char* CStr() const;
+		String& Append(const String& _str);
+		String& Prepend(const String& _str);
 
-	String& ToLower();
-	String& ToUpper();
+		const char* CStr() const;
 
-	size_t Find(const String& _str);
-	size_t Find(size_t _startIndex, const String& _str);
+		String& ToLower();
+		String& ToUpper();
 
-	String& Replace(const String& _find, const String& _replace);
+		size_t Find(const String& _str);
+		size_t Find(size_t _startIndex, const String& _str);
 
-	String& ReadFromConsole();
-	String& WriteToConsole();
+		String& Replace(const String& _find, const String& _replace);
 
-public:
-	bool operator==(const String& _other);
-	bool operator!=(const String& _other);
+		String& ReadFromConsole();
+		String& WriteToConsole();
 
-	String& operator=(const String& _str);
+	public:
+		bool operator==(const String& _other);
+		bool operator!=(const String& _other);
 
-	char& operator[](size_t _index);
-	const char& operator[](size_t _index) const;
+		String& operator=(const String& _str);
 
-private:
-/*
-* Put your internal data structures and members here
-*/
+		char& operator[](size_t _index);
+		const char& operator[](size_t _index) const;
+
+	private:
+		char* data;
+		int length;
+	/*
+	* Put your internal data structures and members here
+	*/
 };
-
-#endif
