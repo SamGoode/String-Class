@@ -2,34 +2,35 @@
 
 class String {
 	private:
+		char null;
 		char* dataPtr;
 		int length;
 
 	public:
 		String();
 
-		String(const char* _str);
+		String(const char* textPtr);
 
-		String(const String& _other);
+		String(const String& str);
 
 		~String();
 
 		size_t Length() const;
-		char& CharacterAt(size_t _index);
-		const char& CharacterAt(size_t _index) const;
+		char& CharacterAt(size_t index);
+		const char& CharacterAt(size_t index) const;
 
-		bool EqualTo(const String& _other) const;
+		bool EqualTo(const String& str) const;
 
-		String& Append(const String& _str);
-		String& Prepend(const String& _str);
+		String& Append(const String& str);
+		String& Prepend(const String& str);
 
 		const char* CStr() const;
 
 		String& ToLower();
 		String& ToUpper();
 
-		size_t Find(const String& _str);
-		size_t Find(size_t _startIndex, const String& _str);
+		size_t Find(const String& str);
+		size_t Find(size_t _startIndex, const String& str);
 
 		String& Replace(const String& _find, const String& _replace);
 
