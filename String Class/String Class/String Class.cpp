@@ -1,57 +1,63 @@
 #include <iostream>
-//#include "String.h"
+#include "String.h"
 
+/*
 class String {
     public:
-        char* data;
+        char* dataPtr;
         int length;
 
         String();
 
         String(const char* text) {
             length = 0;
-            for (int i = 0;*(text + i) != NULL; i++) {
+            for (int i = 0;*(text + i) != 0; i++) {
                 length++;
             }
 
-            data = new char[length + 1];
+            dataPtr = new char[length + 1];
             for (int i = 0; i < length; i++) {
-                *(data + i) = *(text + i);
+                *(dataPtr + i) = *(text + i);
             }
-            *(data + length) = NULL;
+            *(dataPtr + length) = 0;
         }
 
         ~String() {
-            delete[] data;
+            delete[] dataPtr;
         }
 
         void append(String& text) {
             int oldLength = length;
-            char* oldData = data;
+            char* oldData = dataPtr;
             
             length += text.length;
-            data = new char[length + 1];
+            dataPtr = new char[length + 1];
 
             for (int i = 0; i < oldLength; i++) {
-                *(data + i) = *(oldData + i);
+                *(dataPtr + i) = *(oldData + i);
             }
             for (int i = oldLength; i < length; i++) {
-                *(data + i) = *(text.data - oldLength + i);
+                *(dataPtr + i) = *(text.dataPtr - oldLength + i);
             }
-            *(data + length) = NULL;
+            *(dataPtr + length) = NULL;
 
             delete[] oldData;
         }
 };
+*/
 
 int main() {
-    String test = String("munkhzul");
+    String test = String("sebastian");
     String buddies = String(" and ");
-    String test2 = String("jevan");
-    test.append(buddies);
-    test.append(test2);
-    std::cout << test.data << std::endl;
-    std::cout << test.length << std::endl;
+    String test2 = String(test);
+    //test.append(buddies);
+    //test.append(test2);
+    std::cout << test.CStr() << std::endl;
+    std::cout << test.Length() << std::endl;
+    std::cout << buddies.CStr() << std::endl;
+    std::cout << buddies.Length() << std::endl;
+    std::cout << test2.CStr() << std::endl;
+    std::cout << test2.Length() << std::endl;
 
     /*
     char* data;

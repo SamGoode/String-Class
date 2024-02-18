@@ -1,6 +1,10 @@
 #pragma once
 
 class String {
+	private:
+		char* dataPtr;
+		int length;
+
 	public:
 		String();
 
@@ -10,7 +14,6 @@ class String {
 
 		~String();
 
-	public:
 		size_t Length() const;
 		char& CharacterAt(size_t _index);
 		const char& CharacterAt(size_t _index) const;
@@ -33,7 +36,6 @@ class String {
 		String& ReadFromConsole();
 		String& WriteToConsole();
 
-	public:
 		bool operator==(const String& _other);
 		bool operator!=(const String& _other);
 
@@ -41,8 +43,4 @@ class String {
 
 		char& operator[](size_t _index);
 		const char& operator[](size_t _index) const;
-
-	private:
-		const char* data;
-		int length;
 };
