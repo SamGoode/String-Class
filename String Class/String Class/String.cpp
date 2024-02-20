@@ -125,10 +125,7 @@ String& String::ToUpper() {
 
     return *this;
 }
-//find 'tian' inside 'sebastian'
 
-//TODO: if remaining unsearched characters add up to less than the find str terminate
-//DONE
 size_t String::Find(const String& str) {
     if (length < str.Length()) {
         return -1;
@@ -159,6 +156,62 @@ size_t String::Find(const String& str) {
     }
 
     return -1;
+}
+
+size_t String::Find(size_t startIndex, const String& str) {
+    if (length - startIndex < str.Length()) {
+        return -1;
+    }
+
+    for (int i = startIndex; i < length; i++) {
+        if (length - i < str.Length()) {
+            break;
+        }
+
+        if (*(dataPtr + i) != *str.CStr()) {
+            continue;
+        }
+
+        if (str.Length() == 1) {
+            return i;
+        }
+
+        for (int j = 1; j < str.Length(); j++) {
+            if (*(dataPtr + i + j) != *(str.CStr() + j)) {
+                break;
+            }
+
+            if (j == str.Length() - 1) {
+                return i;
+            }
+        }
+    }
+
+    return -1;
+}
+
+//There's probably a better way to do this
+String& String::Replace(const String& find, const String& replace) {
+    String oldStr = *this;
+    
+    dataPtr = new char[0];
+    length = 0;
+
+    for (int i = 0; i < oldStr.Length(); i++) {
+        if (i == oldStr.Find(i, find)) {
+            Append(replace);
+            i += find.Length() - 1;
+        }
+        else {
+            char* temp = new char[2];
+            *temp = oldStr.CharacterAt(i);
+            *(temp + 1) = 0;
+            Append(temp);
+            delete[] temp;
+        }
+    }
+
+    return *this;
 }
 
 const char* String::CStr() const {

@@ -30,9 +30,9 @@ class String {
 		String& ToUpper();
 
 		size_t Find(const String& str);
-		size_t Find(size_t _startIndex, const String& str);
+		size_t Find(size_t startIndex, const String& str);
 
-		String& Replace(const String& _find, const String& _replace);
+		String& Replace(const String& find, const String& replace);
 
 		String& ReadFromConsole();
 		String& WriteToConsole();

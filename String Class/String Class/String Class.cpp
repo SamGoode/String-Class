@@ -2,12 +2,23 @@
 #include "String.h"
 
 int main() {
-    String test = String("Sebastian");
-    String buddies = String(" and ");
-    String test2 = String("Sven");
+    String test = "Sebastian";
+    String buddies = "";
+    String test2 = test;
     buddies.Prepend(test);
     buddies.Append(test2);
-    
-    std::cout << test.CStr() << std::endl;
-    std::cout << test.Find("tian") << std::endl;
+
+    int finds = 0;
+    String find = "an";
+
+    for (int i = 0; buddies.Find(i, find) != -1; i += buddies.Find(i, find) + 1) {
+        finds++;
+    }
+    std::cout << finds << std::endl;
+
+    std::cout << buddies.CStr() << std::endl;
+    buddies.Replace("tian", "Sven");
+    std::cout << buddies.CStr() << std::endl;
+
+    std::cout << buddies.Find(7, "ven") << std::endl;
 }
