@@ -194,6 +194,7 @@ size_t String::Find(size_t startIndex, const String& str) {
 String& String::Replace(const String& find, const String& replace) {
     String oldStr = *this;
     
+    delete[] dataPtr;
     dataPtr = new char[0];
     length = 0;
 
