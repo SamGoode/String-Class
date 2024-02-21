@@ -1,14 +1,13 @@
 #include "String.h"
+#include <iostream>
 
 String::String() {
-    null = 0;
-    dataPtr = new char[0];
+    dataPtr = new char[1];
+    *dataPtr = 0;
     length = 0;
 }
 
 String::String(const char* textPtr) {
-    null = 0;
-    
     length = 0;
     for (int i = 0; *(textPtr + i) != 0; i++) {
         length++;
@@ -22,8 +21,6 @@ String::String(const char* textPtr) {
 }
 
 String::String(const String& str) {
-    null = 0;
-    
     length = str.Length();
     dataPtr = new char[length + 1];
     for (int i = 0; i < length; i++) {
@@ -41,16 +38,16 @@ size_t String::Length() const {
 }
 
 char& String::CharacterAt(size_t index) {
-    if (index < 0 || index > length) {
-        return null;
+    if (index > length) {
+        return *(dataPtr + length); //returns null terminator
     }
 
     return *(dataPtr + index);
 }
 
 const char& String::CharacterAt(size_t index) const {
-    if (index < 0 || index > length) {
-        return null;
+    if (index > length) {
+        return *(dataPtr + length); //returns null terminator
     }
 
     return *(dataPtr + index);
@@ -83,7 +80,7 @@ String& String::Append(const String& str) {
     }
 
     length += str.Length();
-    *(dataPtr + length) = null;
+    *(dataPtr + length) = 0;
     delete[] oldPtr;
     return *this;
 }
@@ -101,9 +98,13 @@ String& String::Prepend(const String& str) {
     }
 
     length += str.Length();
-    *(dataPtr + length) = null;
+    *(dataPtr + length) = 0;
     delete[] oldPtr;
     return *this;
+}
+
+const char* String::CStr() const {
+    return dataPtr;
 }
 
 String& String::ToLower() {
@@ -135,7 +136,7 @@ size_t String::Find(const String& str) {
         if (length - i < str.Length()) {
             break;
         }
-        
+        /*
         if (*(dataPtr + i) != *str.CStr()) {
             continue;
         }
@@ -143,8 +144,8 @@ size_t String::Find(const String& str) {
         if (str.Length() == 1) {
             return i;
         }
-
-        for (int j = 1; j < str.Length(); j++) {
+        */
+        for (int j = 0; j < str.Length(); j++) {
             if (*(dataPtr + i + j) != *(str.CStr() + j)) {
                 break;
             }
@@ -167,7 +168,7 @@ size_t String::Find(size_t startIndex, const String& str) {
         if (length - i < str.Length()) {
             break;
         }
-
+        /*
         if (*(dataPtr + i) != *str.CStr()) {
             continue;
         }
@@ -175,8 +176,8 @@ size_t String::Find(size_t startIndex, const String& str) {
         if (str.Length() == 1) {
             return i;
         }
-
-        for (int j = 1; j < str.Length(); j++) {
+        */
+        for (int j = 0; j < str.Length(); j++) {
             if (*(dataPtr + i + j) != *(str.CStr() + j)) {
                 break;
             }
@@ -215,6 +216,68 @@ String& String::Replace(const String& find, const String& replace) {
     return *this;
 }
 
-const char* String::CStr() const {
-	return dataPtr;
+String& String::ReadFromConsole() {
+    char dummyChar;
+    std::cin.get(dummyChar);
+    std::cin.putback(dummyChar);
+    int bufferSize = std::cin.rdbuf()->in_avail();
+
+    delete[] dataPtr;
+    dataPtr = new char[bufferSize];
+    for (int i = 0; i < bufferSize - 1; i++) {
+        std::cin.get(*(dataPtr + i));
+    }
+    *(dataPtr + bufferSize - 1) = 0;
+
+    return *this;
+}
+
+String& String::WriteToConsole() {
+    std::cout << dataPtr << std::endl;
+
+    return *this;
+}
+
+bool String::operator==(const String& str) {
+    return EqualTo(str);
+}
+
+bool String::operator!=(const String& str) {
+    return !EqualTo(str);
+}
+
+String& String::operator=(const String& str) {
+    delete[] dataPtr;
+    length = str.Length();
+
+    for (int i = 0; i < length; i++) {
+        *(dataPtr + i) = str.CharacterAt(i);
+    }
+    *(dataPtr + length) = 0;
+
+    return *this;
+}
+
+char& String::operator[](size_t index) {
+    return CharacterAt(index);
+}
+
+const char& String::operator[](size_t index) const {
+    return CharacterAt(index);
+}
+/*
+bool String::operator<(const String& str) {
+
+}
+*/
+
+String String::operator+(const String& str) {
+    String newStr = *this;
+    newStr.Append(str);
+    return newStr;
+}
+
+String& String::operator+=(const String& str) {
+    Append(str);
+    return *this;
 }

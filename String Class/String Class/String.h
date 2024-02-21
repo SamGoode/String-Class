@@ -2,7 +2,6 @@
 
 class String {
 	private:
-		char null;
 		char* dataPtr;
 		int length;
 
@@ -37,11 +36,16 @@ class String {
 		String& ReadFromConsole();
 		String& WriteToConsole();
 
-		bool operator==(const String& _other);
-		bool operator!=(const String& _other);
+		bool operator==(const String& str);
+		bool operator!=(const String& str);
 
-		String& operator=(const String& _str);
+		String& operator=(const String& str);
 
 		char& operator[](size_t _index);
 		const char& operator[](size_t _index) const;
+
+		bool operator<(const String& str);
+
+		String operator+(const String& str);
+		String& operator+=(const String& str);
 };
