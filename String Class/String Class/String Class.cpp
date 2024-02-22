@@ -53,6 +53,4 @@ int main() {
     }
 
     logs.close();
-
-    return 0;
 }
