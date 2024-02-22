@@ -10,6 +10,4 @@ int main() {
     demo2.CharacterAt(5) = ',';
     demo2.Replace("op de doop", "rld!");
     demo2.WriteToConsole();
-
-    std::cout << (String("testing") < String("testingsss"));
 }

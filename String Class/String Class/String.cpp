@@ -139,7 +139,7 @@ String& String::ToUpper() {
     return *this;
 }
 
-//finds the first point where str can be found within string object and returns the index of where it's found (returns -1 if can't be found)
+//finds first occurrence of str in string and object and returns the index of where it's found (returns -1 if can't be found)
 size_t String::Find(const String& str) {
     if (length < str.Length()) {
         return -1;
@@ -170,7 +170,7 @@ size_t String::Find(size_t startIndex, const String& str) {
         return -1;
     }
 
-    for (int i = startIndex; i < length; i++) {
+    for (size_t i = startIndex; i < length; i++) {
         if (length - i < str.Length()) {
             break;
         }
@@ -199,7 +199,7 @@ String& String::Replace(const String& find, const String& replace) {
     dataPtr = new char[0];
     length = 0;
 
-    for (int i = 0; i < oldStr.Length(); i++) {
+    for (size_t i = 0; i < oldStr.Length(); i++) {
         if (i == oldStr.Find(i, find)) {
             Append(replace);
             i += find.Length() - 1;
@@ -221,7 +221,7 @@ String& String::ReadFromConsole() {
     char dummyChar;
     std::cin.get(dummyChar);
     std::cin.putback(dummyChar);
-    int bufferSize = std::cin.rdbuf()->in_avail();
+    std::streamsize bufferSize = std::cin.rdbuf()->in_avail();
 
     delete[] dataPtr;
     dataPtr = new char[bufferSize];
@@ -306,6 +306,7 @@ bool String::operator<(const String& str) {
             return false;
         }
     }
+
 
     return true;
 }

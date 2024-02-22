@@ -3,7 +3,7 @@
 class String {
 	private:
 		char* dataPtr;
-		int length;
+		size_t length;
 
 	public:
 		String();
