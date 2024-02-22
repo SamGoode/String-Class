@@ -222,13 +222,14 @@ String& String::ReadFromConsole() {
     std::cin.get(dummyChar);
     std::cin.putback(dummyChar);
     std::streamsize bufferSize = std::cin.rdbuf()->in_avail();
-
+    
+    length = bufferSize - 1;
     delete[] dataPtr;
-    dataPtr = new char[bufferSize];
-    for (int i = 0; i < bufferSize - 1; i++) {
+    dataPtr = new char[length + 1];
+    for (int i = 0; i < length; i++) {
         std::cin.get(*(dataPtr + i));
     }
-    *(dataPtr + bufferSize - 1) = 0;
+    *(dataPtr + length) = 0;
 
     return *this;
 }
