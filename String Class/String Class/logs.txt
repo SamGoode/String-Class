@@ -1,4 +1,4 @@
-Date: 23/1/2024 Time: 0:18:44
+Date: 23/2/2024 Time: 12:27:48
 Test 1 Length method successful
 Test 2 CharacterAt method successful
 Test 3 EqualTo method successful
@@ -11,48 +11,20 @@ Test 9 Find method successful
 Test 10 Replace method successful
 10/10 tests successful
 
-
-Date: 23/1/2024 Time: 0:18:55
+Date: 23/1/2024 Time: 15:26:17
 Test 1 Length method successful
 Test 2 CharacterAt method successful
 Test 3 EqualTo method successful
 Test 4 Append method successful
-Test 5 Prepend method successful
+Test 5 Prepend method failed
 Test 6 CStr method successful
-Test 7 ToLower method successful
-Test 8 ToUpper method successful
-Test 9 Find method successful
-Test 10 Replace method successful
-10/10 tests successful
+Test 7 ToLower method failed
+Test 8 ToUpper method failed
+Test 9 Find method failed
+Test 10 Replace method failed
+5/10 tests successful
 
-
-Date: 23/1/2024 Time: 0:19:8
-Test 1 Length method successful
-Test 2 CharacterAt method successful
-Test 3 EqualTo method successful
-Test 4 Append method successful
-Test 5 Prepend method successful
-Test 6 CStr method successful
-Test 7 ToLower method successful
-Test 8 ToUpper method successful
-Test 9 Find method successful
-Test 10 Replace method successful
-10/10 tests successful
-
-Date: 23/1/2024 Time: 0:30:4
-Test 1 Length method successful
-Test 2 CharacterAt method successful
-Test 3 EqualTo method successful
-Test 4 Append method successful
-Test 5 Prepend method successful
-Test 6 CStr method successful
-Test 7 ToLower method successful
-Test 8 ToUpper method successful
-Test 9 Find method successful
-Test 10 Replace method successful
-10/10 tests successful
-
-Date: 23/1/2024 Time: 0:30:14
+Date: 23/1/2024 Time: 15:27:6
 Test 1 Length method successful
 Test 2 CharacterAt method successful
 Test 3 EqualTo method successful
