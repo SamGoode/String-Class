@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
+#include <ctime>
 #include "String.h"
 
 int main() {
@@ -30,7 +31,7 @@ int main() {
 
     time_t result = time(nullptr);
     tm tm = *localtime(&result);
-    logs << "Date: " << tm.tm_mday << "/" << tm.tm_mon << "/" << tm.tm_year + 1900;
+    logs << "Date: " << tm.tm_mday << "/" << tm.tm_mon + 1 << "/" << tm.tm_year + 1900;
     logs << " Time: " << tm.tm_hour << ":" << tm.tm_min << ":" << tm.tm_sec;
     logs << std::endl;
 
